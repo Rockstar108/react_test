@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: sample
+  name: sample
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: sample
+  template:
+    metadata:
+      labels:
+        app: sample
+    spec:
+      containers:
+      - image: rockstar24/sample_react_repo:${{git rev-parse --short HEAD}}
+        name: sample-react-repo-6q6xf
