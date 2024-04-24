@@ -28,7 +28,7 @@ jobs:
       - name: Checkout tools repo
         uses: actions/checkout@v4
         with:
-          repository: aa/Dockerfile
+          repository: aa
           token: ${{ secrets.DOCKER_TOKEN }} # `GH_PAT` is a secret that contains your PAT
           path: Dockerfile
 
