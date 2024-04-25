@@ -21,8 +21,6 @@ jobs:
       - uses: actions/checkout@v4
         name: Checkout
 
-     
-
       - name: Start minikube
         uses: medyagh/setup-minikube@master
 
@@ -30,7 +28,11 @@ jobs:
         run: kubectl apply -f Manifests/deployment.yaml -f Manifests/service.yaml
 
       - name: Get pods
-        run: kubectl get pods --watch
+        run: kubectl get pods
+
+      - name: Test service URLs
+        run: |
+          minikube service list
         
       
           
