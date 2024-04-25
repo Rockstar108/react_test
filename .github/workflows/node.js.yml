@@ -22,7 +22,9 @@ jobs:
       - name: Checkout
         shell: bash
         run: |
-         echo "git rev-parse HEAD"
+          git rev-parse --short HEAD
+
+
        
 
 
