@@ -30,17 +30,16 @@ jobs:
           token: ${{ secrets.DOCKER_TOKEN }}
           path: aa/Dockerfile
           ref: main
-
-      - name: Build Docker image
-        run: docker build -t commit .
+ 
+      - name: Push Docker image
+        run: |
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker build -t ${{ secrets.DOCKER_REGISTRY }} .
+          docker push ${{ secrets.DOCKER_REGISTRY }}:latest
 
       - name: Test
         run: npm test
 
-      - name: Push Docker image
-        run: |
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push ${{ secrets.DOCKER_REGISTRY }}:latest
-
+     
       - name: Deploy to Kubernetes
         run: kubectl apply -f aa/Manifests/deployment.yaml -f aa/Manifests/service.yaml
