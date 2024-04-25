@@ -40,9 +40,7 @@ jobs:
       - name: Test service URLs
         run: |
           minikube service list
-          minikube service webapp-service
-          echo "------------------opening the service------------------"
-          curl $(minikube service webapp-service --url)    
+          minikube service webapp-service --url   
         
       
           
