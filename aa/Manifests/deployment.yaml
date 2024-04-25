@@ -17,3 +17,12 @@ spec:
       containers:
       - image: rockstar24/sample_react_repo:latest
         name: sample-react-repo
+       resources:
+          limits:
+              cpu: 50m
+              memory: 100Mi
+          requests:
+              cpu: 25m
+              memory: 10Mi
+       ports:
+           - containerPort: 3000
