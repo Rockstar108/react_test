@@ -15,5 +15,5 @@ spec:
         app: sample
     spec:
       containers:
-      - image: rockstar24/sample_react_repo:${{git rev-parse --short HEAD}}
-        name: sample-react-repo-6q6xf
+      - image: ${{ secrets.DOCKER_REGISTERY }}:latest
+        name: sample-react-repo
