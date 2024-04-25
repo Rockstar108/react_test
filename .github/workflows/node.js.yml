@@ -20,11 +20,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Checkout
-        shell: bash
-        run: |
-          mkdir ${HOME}/.kube
-          echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
-          kubectl version
+        with:
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+
+      - name: use content
+        run: kubectl config use-context minikube
       
           
 
