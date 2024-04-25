@@ -20,19 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         name: Checkout
-      
-      - name: Set up Kubectl
-        uses: azure/k8s-set-context@v4
-        with:
-           method: kubeconfig
-           kubeconfig: ${{ secrets.KUBE_CONFIG }}
-           context: minikube
-      
-      - name: Deploy to k8s
-        shell: bash
-        run: kubectl version
 
+      - name: Start minikube
+        uses: medyagh/setup-minikube@master
 
+      - name: get pods
+        run: kubectl get pods
       
           
 
