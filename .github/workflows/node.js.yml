@@ -23,6 +23,13 @@ jobs:
 
       - name: Start minikube
         uses: medyagh/setup-minikube@master
+        
+      - name: Docker build and push  
+        run: |
+            eval $(minikube -p minikube docker-env)
+            echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin 
+            docker build -t ${{ secrets.DOCKER_REGISTERY }}  .
+            docker push ${{ secrets.DOCKER_REGISTERY }}:latest
 
       - name: Deploy pods
         run: kubectl apply -f Manifests/deployment.yaml -f Manifests/service.yaml
@@ -33,6 +40,8 @@ jobs:
       - name: Test service URLs
         run: |
           minikube service list
+          echo "------------------opening the service------------------"
+          curl $(minikube service example --url)    
         
       
           
