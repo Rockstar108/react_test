@@ -41,7 +41,7 @@ jobs:
         run: |
           minikube service list
           echo "------------------opening the service------------------"
-          curl $(minikube service example --url)    
+          curl $(minikube service webapp-service --url)    
         
       
           
