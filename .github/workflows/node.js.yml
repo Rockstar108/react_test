@@ -27,6 +27,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: aa/Dockerfile
+          token: ${{ secrets.DOCKER_TOKEN }}
           path: Dockerfile
 
       - name: Build Docker image
