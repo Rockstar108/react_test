@@ -24,7 +24,9 @@ jobs:
           kubeconfig: ${{ secrets.KUBECONFIG }}
        
       - name: use content
-        run: kubectl get pods
+        run: kubectl config use-context context_info
+
+
       
           
 
