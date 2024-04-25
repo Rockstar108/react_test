@@ -21,11 +21,17 @@ jobs:
       - uses: actions/checkout@v4
         name: Checkout
 
+      - name: Docker build and push  
+        run: |
+            echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin 
+            docker build -t ${{ secrets.DOCKER_REGISTERY }}  .
+            docker push ${{ secrets.DOCKER_REGISTERY }}:latest
+
       - name: Start minikube
         uses: medyagh/setup-minikube@master
 
       - name: get pods
-        run: kubectl get pods
+        run: kubectl apply -f Manifests/deployment.yaml -f Manifests/service.yaml
       
           
 
