@@ -26,9 +26,9 @@ jobs:
       - name: Checkout private tools
         uses: actions/checkout@v4
         with:
-          repository: aa/Dockerfile
+          repository: Rockstar108/react_test
           token: ${{ secrets.DOCKER_TOKEN }}
-          path: Dockerfile
+          path: aa/Dockerfile
           ref: main
 
       - name: Build Docker image
