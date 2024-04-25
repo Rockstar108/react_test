@@ -29,6 +29,7 @@ jobs:
            context: minikube
       
       - name: Deploy to k8s
+        shell: bash
         run: kubectl version
 
 
