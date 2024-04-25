@@ -26,10 +26,10 @@ jobs:
         with:
            method: kubeconfig
            kubeconfig: ${{ secrets.KUBE_CONFIG }}
-           context: context_info
+           context: minikube
       
       - name: Deploy to k8s
-        run: kubectl config use-context context_info
+        run: kubectl get pods
 
 
       
