@@ -29,7 +29,7 @@ jobs:
            context: context_info
       
       - name: Deploy to k8s
-        run: kubectl get pods
+        run: kubectl config use-contect context_info
 
 
       
