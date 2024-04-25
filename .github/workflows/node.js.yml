@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         with:
           kubeconfig: ${{ secrets.KUBECONFIG }}
-
+       
       - name: use content
         run: kubectl config use-context minikube
       
