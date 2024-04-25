@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         shell: bash
         run: |
-          git log --format="%H" -n 1
+         echo "git rev-parse HEAD"
        
 
 
