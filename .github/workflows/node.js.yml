@@ -24,7 +24,7 @@ jobs:
           kubeconfig: ${{ secrets.KUBECONFIG }}
        
       - name: use content
-        run: kubectl config use-context minikube
+        run: kubectl get pods
       
           
 
