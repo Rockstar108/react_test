@@ -18,12 +18,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout private tools
         uses: actions/checkout@v4
-    
-          
-      - name: dockerfile patj
-        uses: aa/Dockerfile@v3
+        with:
+          repository: aa/Dockerfile
+          path: Dockerfile
 
       - name: Build Docker image
         run: docker build -t commit .
