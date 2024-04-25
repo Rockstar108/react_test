@@ -15,5 +15,5 @@ spec:
         app: sample
     spec:
       containers:
-      - image: ${{ secrets.DOCKER_REGISTERY }}:latest
+      - image: rockstar24/sample_react_repo:latest
         name: sample-react-repo
