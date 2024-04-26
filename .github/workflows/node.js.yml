@@ -35,7 +35,7 @@ jobs:
             docker push ${{ secrets.DOCKER_REGISTERY }}:latest
 
       - name: Deploy pods
-        run: kubectl apply -f Manifests/deployment.yaml -f Manifests/service.yaml
+        run: kubectl apply -f Manifests/deployment.yaml -f Manifests/service.yaml -f Manifests/hpa.yaml
 
       - name: Get pods
         run: kubectl get pods
