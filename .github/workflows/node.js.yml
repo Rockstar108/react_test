@@ -30,7 +30,8 @@ jobs:
 
 
       - name: Get pods
-        run: kubectl get pods
+        run: minikube start
+        
 
       - name: Test service URLs
         run: |
