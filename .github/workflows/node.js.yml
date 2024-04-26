@@ -23,6 +23,7 @@ jobs:
 
       - name: ceate kube
         run: |
+         export SHELL=/bin/bash
          echo ${{ secrets.KUBE_CONFIG }} | base64 --deocde
 
       - name: Set Kubernetes Context
