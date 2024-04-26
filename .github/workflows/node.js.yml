@@ -21,14 +21,11 @@ jobs:
       - uses: actions/checkout@v4
         name: Checkout
 
-      - uses: actions-hub/kubectl@master
-        name: kubetnetes
-        env:
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-
-      - uses: actions-hub/kubectl@master
+      - name: Set Kubernetes Context
+        uses: azure/k8s-set-context@v1
         with:
-          args: get pods
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
  
         
