@@ -23,7 +23,7 @@ jobs:
 
       - name: Start minikube
         id: minikube
-        uses: Rockstar108/react_test@latest
+        uses: medyagh/setup-minikube@master
         
       - name: Docker build and push  
         run: |
