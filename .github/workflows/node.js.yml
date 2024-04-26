@@ -26,6 +26,7 @@ jobs:
 
       - name: Deploy pods
         run: |
+          export SHELL=/bin/bash
           kubectl apply -f Manifests/deployment.yaml -f Manifests/service.yaml
           sleep 10
 
