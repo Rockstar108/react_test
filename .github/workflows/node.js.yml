@@ -28,10 +28,6 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
           context: minikube 
 
-
-      - name: Get pods
-        run: minikube start
-
       - name: Docker build and push  
         run: |
             export SHELL=/bin/bash
