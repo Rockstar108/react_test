@@ -21,15 +21,15 @@ jobs:
       - uses: actions/checkout@v4
         name: Checkout
 
-      - name: Create kubeconfig
-        shell: bash
-        run: |
-            export SHELL=/bin/bash
-            mkdir ${HOME}/.kube
-            pwd
-            ls -al
-            echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
-            cat ${HOME}/.kube/config
+      - uses: actions-hub/kubectl@master
+        name: kubetnetes
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+
+      - uses: actions-hub/kubectl@master
+        with:
+          args: get pods
+
  
         
       - name: Docker build and push  
