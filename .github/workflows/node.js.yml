@@ -26,6 +26,7 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
+          context: minikube 
 
 
       - name: Get pods
