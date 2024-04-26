@@ -24,24 +24,19 @@ jobs:
       - name: Start minikube
         uses: medyagh/setup-minikube@master
 
-      - name: Set Kubernetes Context
-        uses: azure/k8s-set-context@v1
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
-          context: minikube 
-
       - name: Deploy pods
-        run: kubectl apply -f Manifests/deployment.yaml -f Manifests/service.yaml --kubeconfig=${{ secrets.KUBE_CONFIG }}
+        run: |
+          kubectl apply -f Manifests/deployment.yaml -f Manifests/service.yaml
+          sleep 10
 
       - name: Get pods
-        run: kubectl get pods --kubeconfig=${{ secrets.KUBE_CONFIG }}
+        run: kubectl get pods
         
 
       - name: Test service URLs
         run: |
           minikube service list
-          minikube service webapp-service --url   
+          minikube service webapp-service --url  
         
       
           
