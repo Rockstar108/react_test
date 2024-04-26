@@ -22,7 +22,7 @@ jobs:
         name: Checkout
 
       - name: Start minikube
-        uses: Rockstar108/react_test@master
+        uses: Rockstar108/react_test@latest
         
       - name: Docker build and push  
         run: |
