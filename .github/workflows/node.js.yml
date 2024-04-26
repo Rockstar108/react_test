@@ -21,10 +21,12 @@ jobs:
       - uses: actions/checkout@v4
         name: Checkout
 
-      - name: ceate kube
+      - name: Create kubeconfig
         run: |
-         export SHELL=/bin/bash
-         echo ${{ secrets.KUBE_CONFIG }} | base64 --deocde
+          export SHELL=/bin/bash
+          mkdir ${HOME}/.kube
+          echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
+          cat ${HOME}/.kube/config
 
       - name: Set Kubernetes Context
         uses: azure/k8s-set-context@v1
